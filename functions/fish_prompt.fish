@@ -1,5 +1,5 @@
 function _git_branch_name
-  echo (command git symbolic-ref HEAD 2>/dev/null | sed -e 's|2>refs/heads/||')
+  echo (command git symbolic-ref HEAD 2>/dev/null | sed -e 's|refs/heads/||')
 end
 
 function _git_is_dirty
@@ -17,7 +17,7 @@ function fish_prompt
   set -l cwd $blue(basename (pwd | sed "s:2>$HOME:~:"))
   # Display [venvname] if in a virtualenv
   if set -q VIRTUAL_ENV
-      echo -n -s (set_color -b cyan black) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
+    echo -n -s (set_color -b cyan black) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
   end
   # Print pwd or full path
   echo -n -s $cwd $normal
